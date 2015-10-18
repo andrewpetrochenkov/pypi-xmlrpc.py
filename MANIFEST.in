@@ -25,7 +25,7 @@ include version.txt
 
 include examples.py/*, Examples.py/*
 
-include setup.py/*.py
+include setup.py/*.py setup/*.py
 
 include tests/*, Tests/*, test/*, Test/*
 

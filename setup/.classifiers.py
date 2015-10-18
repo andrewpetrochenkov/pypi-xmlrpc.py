@@ -7,12 +7,6 @@ from os.path import *
 dir = dirname(dirname(__file__))
 if not dir: dir="."
 
-# classifiers.txt
-# global default ~/.classifiers.txt +custom ./.classifiers.txt, ./classifiers.txt
-classifiers = []
-name = "classifiers.txt"
-files = [join(os.environ["HOME"],name),".%s" % name,name]
-
 def read(path):
     if exists(path) and isfile(path):
         lines = open(path).read().splitlines()
@@ -21,14 +15,15 @@ def read(path):
         return lines
     return []
 
+classifiers = []
 # ~/.classifiers.txt (default)
-default = read(join(os.environ["HOME"],name))
+default = read(join(os.environ["HOME"],".classifiers.txt"))
 # ./.classifiers.txt, ./classifiers.txt (custom, override default)
 custom=read(".classifiers.txt")+read("classifiers.txt")
 for l in custom:
     if l.find(" :: ")>0:
         k = l.split(" :: ")[0]
-        default = list(filter(lambda l:l.find(k)==0,default))
+        default = list(filter(lambda l:l.find(k)!=0,default))
 classifiers=default+custom
 classifiers.sort()
 

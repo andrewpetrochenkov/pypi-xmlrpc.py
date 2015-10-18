@@ -15,6 +15,7 @@ else:
     # packages
     names = os.listdir(dir)
     names = list(filter(lambda _:_.lower()!="tests",names)) # exclude "tests"
+    names = list(filter(lambda _:_.lower()!="setup",names)) # exclude "setup"
     names = list(filter(lambda name:name.find(".")<0,names)) # exclude *.* names with dot
     fullpaths = list(map(lambda name:join(dir,name),names))
     dirs = list(filter(lambda path:isdir(path),fullpaths))
