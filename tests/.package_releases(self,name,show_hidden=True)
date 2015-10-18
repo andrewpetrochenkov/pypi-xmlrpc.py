@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+
+#!/usr/bin/env python
+from unittest import main, skip, TestCase
+from apipypi import pypi
+from assert_is import *
+
+
+class TestCase(TestCase):
+    #@skip("")
+    def test(self):
+        is_list(pypi.package_releases("osascript"))
+
+    #@skip("")
+    def test_show_hidden(self):
+        is_list(pypi.package_releases("osascript", show_hidden=True))
+
+if __name__ == "__main__":
+    main()

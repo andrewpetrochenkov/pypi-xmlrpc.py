@@ -1,0 +1,31 @@
+# http://docs.python.org/2/distutils/sourcedist.html#the-manifest-in-template
+
+# LICENSE*, README*, description NOT required
+exclude description
+exclude LICENSE*
+exclude README*
+
+# .entry_points
+include .entry_points.txt entry_points.txt
+
+# install_requires
+include requirements.txt install_requires.txt
+
+# packages
+include .packages.txt packages.txt
+
+# py_modules
+include py_modules*/*.py .py_modules.txt py_modules.txt
+
+# scripts
+include scripts*/*.py .scripts.txt scripts.txt
+
+# version.txt
+include version.txt
+
+include examples.py/*, Examples.py/*
+
+include setup.py/*.py
+
+include tests/*, Tests/*, test/*, Test/*
+
