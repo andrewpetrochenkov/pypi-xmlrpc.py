@@ -5,7 +5,7 @@ import os
 from os.path import *
 from imp import *
 try:
-    from setuptools import setup
+    from setuptools import setup # python setup.py develop
 except ImportError:
     from distutils.core import setup
 import sys

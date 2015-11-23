@@ -12,10 +12,25 @@ fi
 ! [ -e setup.py ] && echo "ERROR: setup.py NOT EXISTS" && exit 1
 
 python_lib="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
-if [ -w "$python_lib" ]; then
-	( set -x; python ./setup.py sdist upload ) || exit $?
-	( set -x; chmod -R 777 . )
-else
-	( set -x; sudo python ./setup.py sdist upload ) || exit $?
-	( set -x; sudo chmod -R 777 . )
-fi
+log="$TMPDIR"$$
+[ -e "$log" ] && rm -fr "$log"
+set python ./setup.py sdist upload
+! [ -w "$python_lib" ] && set sudo "$@"
+( set -x; "$@" | tee "$log" ) || {
+	# error: Upload failed (400): A file named "pkgname-z.y.z.tar.gz" already exists for pkgname-z.y.z. 
+	# To fix problems with that file you should create a new release.
+	grep -q "already exists" "$log" || exit 1 
+}
+! [ -w "$python_lib" ] && ( set -x; sudo chmod -R 777 . )
+
+egg_info="$(find . -type d -name "*.egg-info")"
+[[ -z $egg_info ]] && echo "ERROR: *.egg-info NOT EXISTS" && exit 1
+function PKG-INFO.name() {
+	IFS=:;set $(grep ^"Name: " "$1" | head -1);IFS=
+	local name="${2// /}"
+	local name="${name//-/_}"
+	echo $name
+}
+name="$(PKG-INFO.name "$egg_info"/PKG-INFO)"
+url="https://pypi.python.org/pypi/$name"
+( set -x; open "$url" );:
