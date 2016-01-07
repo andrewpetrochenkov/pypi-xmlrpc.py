@@ -4,18 +4,16 @@
 ! [ -x "${BASH_SOURCE[0]}" ] && ( set -x; chmod +x "${BASH_SOURCE[0]}" )
 ! [ -t 1 ] && ( set -x; open "${BASH_SOURCE[0]}" ) && exit
 
-if [ -t 1 ] && [ -e ~/.command/config.sh ]; then
-	{ set -x;  . ~/.command/config.sh; { set +x; } 2>/dev/null; }
+{ set -x; cd "${BASH_SOURCE[0]%/*/*}"; { set +x; } 2>/dev/null; }
+
+if [ -e ~/.command/trap.sh ]; then
+	{ set -x;  . ~/.command/trap.sh || exit; { set +x; } 2>/dev/null; }
+fi
+if [ -e ~/.command/config.sh ]; then
+	{ set -x;  . ~/.command/config.sh || exit; { set +x; } 2>/dev/null; }
 fi
 
-{ set -x; cd "${BASH_SOURCE[0]%/*/*}" || exit $?; { set +x; } 2>/dev/null; }
-! [ -e setup.py ] && echo "ERROR: setup.py NOT EXISTS" && exit 1
-
-python_lib="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
-if [ -w "$python_lib" ]; then
-	( set -x; python ./setup.py register ) || exit $?
-	( set -x; chmod -R 777 . )
-else
-	( set -x; sudo python ./setup.py register ) || exit $?
-	( set -x; sudo chmod -R 777 . )
-fi
+sp="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+[ -L "$sp" ] && sp="$(cd "${sp%/*}" && cd `readlink "${sp##*/}"` && echo $PWD)"
+set python ./setup.py register; ! [ -w "$sp" ] && set sudo "$@"
+( set -x; "$@" ) && { ! [ -w "$sp" ] && ( set -x; chmod -R 777 . ); };:
