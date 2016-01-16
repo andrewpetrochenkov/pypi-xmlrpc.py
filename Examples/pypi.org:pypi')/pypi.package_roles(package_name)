@@ -1,6 +1,10 @@
 #!/usr/bin/env python
+import os
+from os.path import *
 from pypixmlrpc import *
 
-package_name="requests"
-list=pypi.package_roles(package_name)
-print(list)
+offline=join(os.environ["HOME"],".offline")
+if not exists(offline):
+	package_name="requests"
+	list=pypi.package_roles(package_name)
+	print(list)

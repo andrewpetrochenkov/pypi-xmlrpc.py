@@ -97,7 +97,11 @@ pypi = Server('http://pypi.python.org/pypi')
 public(pypi)
 
 if __name__=="__main__":
-    print(pypi.list_packages())
-    print(pypi.user_packages("kennethreitz")) # user_packages
-    print(pypi.package_roles("requests"))
+    import os
+    from os.path import *
+    offline=join(os.environ["HOME"],".offline")
+    if not exists(offline):
+        print(pypi.list_packages())
+        print(pypi.user_packages("kennethreitz")) # user_packages
+        print(pypi.package_roles("requests"))
 

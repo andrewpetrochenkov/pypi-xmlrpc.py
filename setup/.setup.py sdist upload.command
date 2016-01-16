@@ -17,6 +17,7 @@ sp="$(python -c "from distutils.sysconfig import get_python_lib; print(get_pytho
 [ -L "$sp" ] && sp="$(cd "${sp%/*}" && cd `readlink "${sp##*/}"` && echo $PWD)"
 log="$TMPDIR"$$
 [ -e "$log" ] && rm -fr "$log"
+( set -x; find . -type d -name "*.egg-info" -exec rm -r {} \; 2> /dev/null )
 set python ./setup.py sdist upload; ! [ -w "$python_lib" ] && set sudo "$@"
 ( set -x; "$@" | tee "$log" ) || {
 	# error: Upload failed (400): A file named "pkgname-z.y.z.tar.gz" already exists for pkgname-z.y.z. 

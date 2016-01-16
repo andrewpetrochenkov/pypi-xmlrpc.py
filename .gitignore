@@ -1,0 +1,13 @@
+.github/create.command
+.github/gh-pages.command
+.github/init+commit.command
+.github/open.command
+.github/push.command
+.github/remote-add.command
+.github/remote-v.command
+.open "README.html"
+.open -a Terminal "$PWD"
+.open .
+.README/README.mako.command
+.run.command
+Tests/.tests.command

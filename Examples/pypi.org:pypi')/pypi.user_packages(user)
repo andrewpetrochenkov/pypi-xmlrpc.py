@@ -1,6 +1,10 @@
 #!/usr/bin/env python
+import os
+from os.path import *
 from pypixmlrpc import *
 
-user="kennethreitz"
-list=pypi.user_packages(user)
-print(list)
+offline=join(os.environ["HOME"],".offline")
+if not exists(offline):
+	user="kennethreitz"
+	list=pypi.user_packages(user)
+	print(list)
