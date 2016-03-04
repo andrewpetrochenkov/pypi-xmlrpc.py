@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-__all__=[]
 import os
 from os.path import *
 from imp import *
 try:
+    # pypi.python.org/pypi/setuptools
     from setuptools import setup # python setup.py develop
 except ImportError:
+    # standart library
     from distutils.core import setup
 import sys
 import warnings

@@ -6,14 +6,15 @@
 
 { set -x; cd "${BASH_SOURCE[0]%/*/*}"; { set +x; } 2>/dev/null; }
 
-if [ -e ~/.command/trap.sh ]; then
-	{ set -x;  . ~/.command/trap.sh || exit; { set +x; } 2>/dev/null; }
-fi
-if [ -e ~/.command/config.sh ]; then
-	{ set -x;  . ~/.command/config.sh || exit; { set +x; } 2>/dev/null; }
-fi
+tty -s && [ -e ~/.command.sh ] && {
+	{ set -x;  . ~/.command.sh || exit; { set +x; } 2>/dev/null; }
+}
 
 sp="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
+! [ -e "$sp" ] && echo "ERROR: $sp NOT EXISTS" && exit 1
 [ -L "$sp" ] && sp="$(cd "${sp%/*}" && cd `readlink "${sp##*/}"` && echo $PWD)"
-set python ./setup.py install; ! [ -w "$sp" ] && set sudo "$@"
+# python setup.py install_lib:
+#   site-packages/modname.py
+#   site-packages/pkgname/
+set python ./setup.py install_lib --force; ! [ -w "$sp" ] && set sudo "$@"
 ( set -x; "$@" ) && { ! [ -w "$sp" ] && ( set -x; chmod -R 777 . ); };:
