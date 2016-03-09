@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+if ! [ -e setup.py ]; then
+	echo "ERROR: setup.py NOT EXISTS"
+	exit
+fi
+egg_info="$(find "$PWD" -type d -name "*.egg-info")"
+if [[ -z $egg_info ]]; then
+	echo "ERROR: *.egg-info NOT FOUND"
+	exit
+fi
+if ! [ -e "$egg_info"/PKG-INFO ]; then
+	echo "ERROR: ${egg_info/$HOME/\~}/PKG-INFO NOT EXISTS"
+	exit
+fi
+name="$(cat "$egg_info"/PKG-INFO | grep "Name: " | head -1 | awk '{split($0,a,": ");print a[2]}')"
+if [[ -z $name ]]; then
+	name="$(python setup.py --name)"
+fi
+[[ -z $name ]] && echo "ERROR: \$name '' EMPTY" && exit 0
+url=https://pypi.python.org/pypi/"$name"
+( set -x; open "$url" )
+
