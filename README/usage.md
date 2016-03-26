@@ -1,4 +1,4 @@
-```
+```python
 from pypixmlrpc import *
 
 pypi.list_packages()

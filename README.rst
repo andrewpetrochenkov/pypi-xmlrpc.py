@@ -39,8 +39,6 @@ Usage
 
 ------------
 
-**Tested**: python 2.6, 2.7, 3+
-
 **Bug Tracker**: `github.com/russianidiot/pypixmlrpc.py/issues`__
 
 __ https://github.com/russianidiot/pypixmlrpc.py/issues

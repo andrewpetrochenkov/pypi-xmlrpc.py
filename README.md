@@ -2,25 +2,8 @@
 	<b>pypi XML-RPC wrapper</b>
 </p>
 
-<p>
-	<a href="https://travis-ci.org/russianidiot/pypixmlrpc.py" class="reference external">
-		<img src="https://travis-ci.org/russianidiot/pypixmlrpc.py.svg?branch=master" alt="Build Status">
-	</a>
-	<!--
-	<a href="https://codecov.io/github/russianidiot/pypixmlrpc.py/">
-		<img src="https://img.shields.io/codecov/c/github/russianidiot/pypixmlrpc.py.svg" alt="Codecov">
-	</a>
-	-->
-</p>
-<p>
-	<a href="http://badge.fury.io/py/pypixmlrpc" class="reference external">
-		<img src="https://badge.fury.io/py/pypixmlrpc.svg" alt="PyPI version">
-	</a>
-	<a href="https://pypi.python.org/pypi/pypixmlrpc">
-		<img src="https://img.shields.io/pypi/pyversions/pypixmlrpc.svg" alt="PyPI">
-	</a>
-
-</p>
+[![Build Status](https://travis-ci.org/russianidiot/pypixmlrpc.py.svg?branch=master)](https://travis-ci.org/russianidiot/pypixmlrpc.py)[![PyPI](https://img.shields.io/pypi/v/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)
+[![PyPI](https://img.shields.io/pypi/pyversions/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)[![PyPI](https://img.shields.io/pypi/dm/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)[![PyPI](https://img.shields.io/pypi/dw/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)[![PyPI](https://img.shields.io/pypi/dd/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)
 
 	
 Install
@@ -58,29 +41,30 @@ pypi.release_urls("requests",version)
 
 ---
 
-**Tested**: python 2.6, 2.7, 3+
+Feedback 
+--------
+
+[![GitHub issues](https://img.shields.io/github/issues/russianidiot/pypixmlrpc.py.svg)](https://github.com/russianidiot/pypixmlrpc.py/issues) - Github Issues
+
+[![Join the chat at https://gitter.im/russianidiot/pypixmlrpc.py](https://badges.gitter.im/russianidiot/pypixmlrpc.py.svg)](https://gitter.im/russianidiot/pypixmlrpc.py) - **Chat** with me (english/russian) 
 
 ---
 
 <p align="center">
-my Python packages 
-<a href="http://russianidiot.github.io/python/packages">russianidiot.github.io/python/packages</a> <img src="http://russianidiot.github.io/images/python/16.png" />
-</p>
-<p align="center">
-my Python repos <a href="http://russianidiot.github.io/python/">russianidiot.github.io/python/</a>
+my Python packages <a href="http://russianidiot.github.io/python/">russianidiot.github.io/python/</a>
 <img src="http://russianidiot.github.io/images/python/16.png" />
 </p>
 
 <p align="center">
-	all repos <a href="http://russianidiot.github.io/">russianidiot.github.io</a> <img src="http://russianidiot.github.io/images/star/16.png" />
-</p>
-
-<p align="center">
-	README.md generated with <a href="https://github.com/russianidiot/README.mako.py.automation">README.mako.py.automation</a> + <a href="https://github.com/russianidiot/.README.mako">.README.mako</a> 
-<img src="http://russianidiot.github.io/images/book/16.png">
+	all my repos <a href="http://russianidiot.github.io/">russianidiot.github.io</a> <img src="http://russianidiot.github.io/images/star/16.png" />
 </p>
 
 <p align="center">
 	follow me <a href="http://github.com/russianidiot">github.com/russianidiot</a>
 <img src="http://russianidiot.github.io/images/github/16.png" />
+</p>
+
+<p align="center">
+	README.md generated with <a href="https://github.com/russianidiot-dotfiles/.README">.README</a> (python+mako, sh)
+<img src="http://russianidiot.github.io/images/book/16.png">
 </p>

@@ -1,4 +1,4 @@
-.. code-block::
+.. code-block:: python
 
 	from pypixmlrpc import *
 
