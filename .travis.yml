@@ -1,0 +1,72 @@
+language: python
+cache:
+  directories: 
+    - $HOME/.cache/pip
+python:
+  - "2.6"
+  - "2.7"
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.5-dev" # 3.5 development branch
+  - "nightly" # currently points to 3.6-dev
+
+sudo: false
+
+env:
+  - PYTHONIOENCODING="UTF-8"
+
+branches:
+  only:
+    - master
+
+git:
+  depth: 2 # fix depth 1 error
+  # depth: 1 
+  # git checkout -qf <sha>
+  # fatal: reference is not a tree: <sha>
+
+# https://docs.travis-ci.com/user/notifications/
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+  irc: false
+    #channels:
+    #  - "chat.freenode.net#russianidiot"
+    #on_success: never
+    #on_failure: always
+    #use_notice: true
+    #skip_join: true
+
+before_install:
+  - env
+
+install:
+  - set -e # Exit immediately if a subshell command exits with a non-zero status (man sh).
+  - '[ -f requirements.txt ] && cat requirements.txt;:'
+  - '[ -f requirements.txt ] && pip install -r requirements.txt;:'
+  - python setup.py install
+  - pip install coveralls
+
+before_script:
+  - pwd
+
+# command to run tests
+script:
+  - set -e # Exit immediately if a subshell command exits with a non-zero status (man sh).
+  - bash Tests/run.sh
+  # python3.2 coverage has syntax error
+  - '[[ $TRAVIS_PYTHON_VERSION != 3.2 ]] && coverage run --source=$(python setup.py --name) setup.py test;:'
+
+after_script:
+  -
+
+after_failure:
+  - pwd
+
+# Calculate coverage
+#after_success:
+  #- coveralls 
+  # Couldn't find a repository matching this job.

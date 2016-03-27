@@ -1,12 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import os
+__all__ = []
 import sys
+from os.path import *
 
-dir = os.path.dirname(__file__)
-if not dir or dir==".": dir=os.getcwd()
-sys.path.append(dir)
+# __pycache__/ conflict with setuptools
+sys.dont_write_bytecode = True  # REQUIRED!
 
-if __name__=="__main__":
-	import setup
+repo = abspath(dirname(__file__))
 
+# repo/setup.py 	- this file
+# repo/.setup/*.py 	- python files imported by setup.py
+setup = join(repo, ".setup")
+if exists(setup) and isdir(setup):
+    sys.path.append(setup)
+else:
+    raise Exception("%s NOT EXISTS" % setup)
+
+if __name__ == "__main__":
+    import __setup__
+    __setup__.main()

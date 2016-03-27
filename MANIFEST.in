@@ -1,31 +1,18 @@
 # http://docs.python.org/2/distutils/sourcedist.html#the-manifest-in-template
 
-# LICENSE*, README*, description NOT required
-exclude description
-exclude LICENSE*
-exclude README*
+# (re)generate the manifest, but not create a source distribution:
+# python setup.py sdist --manifest-only
 
-# .entry_points
-include .entry_points.txt entry_points.txt
+recursive-include *.py *.sh *.txt
+include setup/* .setup/*
 
-# install_requires
-include requirements.txt install_requires.txt
+global-exclude *.py[co]
 
-# packages
-include .packages.txt packages.txt
+exclude LICENSE* README* description
 
-# py_modules
-include py_modules*/*.py .py_modules.txt py_modules.txt
+include data_files/*
 
-# scripts
-include scripts*/*.py .scripts.txt scripts.txt
-
-# version.txt
-include version.txt
-
-include examples.py/*, Examples.py/*
-
-include setup.py/*.py setup/*.py
+include Examples/*
 
 include tests/*, Tests/*, test/*, Test/*
 

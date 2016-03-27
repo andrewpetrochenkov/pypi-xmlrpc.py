@@ -6,49 +6,50 @@
 [![PyPI](https://img.shields.io/pypi/pyversions/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)[![PyPI](https://img.shields.io/pypi/dm/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)[![PyPI](https://img.shields.io/pypi/dw/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)[![PyPI](https://img.shields.io/pypi/dd/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)
 
 	
-Install
--------
+
+### Install
 
 [github.com](http://github.com/russianidiot/pypixmlrpc.py):
 `pip install git+git://github.com/russianidiot/pypixmlrpc.py.git`
 
-[pypi.python.org](https://pypi.python.org): `pip install pypixmlrpc`
+[pypi.python.org](https://pypi.python.org/pypi/pypixmlrpc/): `pip install pypixmlrpc`
 
-[download](https://github.com/russianidiot/pypixmlrpc.py/archive/master.zip): `python setup.py install` or `setup/.setup.py develop.command` 
+[download](https://github.com/russianidiot/pypixmlrpc.py/archive/master.zip): `[ -e requirements.txt ] && pip install -r requirements.txt; python setup.py install`
+
+	
 
 	
 
 	
 
-Usage 
-=====
+### Usage
+
+```python
+>>> from pypixmlrpc import *
+
+>>> pypi.list_packages()
+
+>>> pypi.user_packages("kennethreitz") # user packages
+
+>>> pypi.package_releases("requests")
+
+>>> pypi.package_roles("requests")
+
+>>> version="x.y.z"
+>>> pypi.release_data("requests",version)
+>>> pypi.release_downloads("requests",version)
+>>> pypi.release_urls("requests",version)
 ```
-from pypixmlrpc import *
 
-pypi.list_packages()
+* * *
 
-pypi.user_packages("kennethreitz")
-
-pypi.package_releases("requests")
-
-pypi.package_roles("requests")
-
-version="x.y.z"
-pypi.release_data("requests",version)
-pypi.release_downloads("requests",version)
-pypi.release_urls("requests",version)
-```
-
----
-
-Feedback 
---------
+### Feedback
 
 [![GitHub issues](https://img.shields.io/github/issues/russianidiot/pypixmlrpc.py.svg)](https://github.com/russianidiot/pypixmlrpc.py/issues) - Github Issues
 
 [![Join the chat at https://gitter.im/russianidiot/pypixmlrpc.py](https://badges.gitter.im/russianidiot/pypixmlrpc.py.svg)](https://gitter.im/russianidiot/pypixmlrpc.py) - **Chat** with me (english/russian) 
 
----
+* * *
 
 <p align="center">
 my Python packages <a href="http://russianidiot.github.io/python/">russianidiot.github.io/python/</a>
