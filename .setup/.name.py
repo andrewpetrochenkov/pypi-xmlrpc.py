@@ -1,16 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-__all__=["name"]
-import os
+__all__ = ["name"]
 from os.path import *
 
 repo = abspath(dirname(dirname(__file__)))
 
 # default pkgname
-name = basename(repo).lower().replace(".py","")#.replace(".","-")
+name = basename(repo).lower().split(".")[0]
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     for k in __all__:
         if k in globals():
-            print("%s: %s" % (k,globals()[k]))
+            print("%s: %s" % (k, globals()[k]))

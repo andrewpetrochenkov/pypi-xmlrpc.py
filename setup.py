@@ -18,5 +18,4 @@ else:
     raise Exception("%s NOT EXISTS" % setup)
 
 if __name__ == "__main__":
-    import __setup__
-    __setup__.main()
+    __import__("__setup__")
