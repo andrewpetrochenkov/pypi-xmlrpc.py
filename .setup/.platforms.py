@@ -6,7 +6,6 @@ from os.path import *
 repo = abspath(dirname(dirname(__file__)))
 
 path = join(repo,"platforms.txt")
-platforms="any" # default
 if exists(path):
     platforms = open(path).read().lstrip().rstrip()
 else:

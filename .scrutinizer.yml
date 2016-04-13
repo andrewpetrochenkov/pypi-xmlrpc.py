@@ -1,0 +1,39 @@
+# scrutinizer-ci.com configurations
+
+# settings -> configuration:
+# https://scrutinizer-ci.com/g/owner/repo/settings/build-config
+
+# 1) auto-generated (default)
+# 2) global default configuration (not loaded by default)
+# https://scrutinizer-ci.com/profile/build-configs
+# 3) repo/.scrutinizer.yml
+
+# https://scrutinizer-ci.com/docs/configuration
+# https://scrutinizer-ci.com/docs/configuration/filter
+# https://scrutinizer-ci.com/docs/guides/python/continuous-integration-deployment
+
+checks:
+  python:
+    code_rating: true
+    duplicate_code: true
+
+filter:
+  excluded_paths:
+    - setup.py
+    - .setup/*
+    - Examples/*
+    - Tests/*
+
+tools:
+  external_code_coverage:
+    timeout: 120
+    runs: 6
+
+before_commands:
+    - bash Tests/install.sh
+
+build:
+  tests:
+    override:
+      - bash Tests/run.sh 
+

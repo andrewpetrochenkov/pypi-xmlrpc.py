@@ -7,12 +7,7 @@ IFS=
 }
 
 ! [ -e setup.py ] && echo "ERROR: setup.py NOT EXISTS" && exit 0
+! [ -e requirements.txt ] && echo "SKIP: requirements.txt NOT EXISTS" && exit 0
+! [ -s requirements.txt ] && echo "SKIP: requirements.txt EMPTY" && exit 0
 
-[[ $PWD != *.py ]] && exit 0
-
-IFS=.;set -- ${PWD##*/};IFS=
-name="$1"
-
-( set -x; python -c "import $name" ) || exit
-# raise AttributeError if invalid __all__
-( set -x; python -c "from $name import *" ) || exit
+( set -x; pip install -r requirements.txt )

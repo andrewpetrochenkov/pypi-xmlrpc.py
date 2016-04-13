@@ -29,4 +29,7 @@ find="$(find Tests -type f -name "*.py" ! -regex '.*/\..*')"
 		( set -x; python "$path" ) || exit
 	done <<< "$find";:
 }
+# python3.2 coverage has syntax error
+# '[[ $TRAVIS_PYTHON_VERSION != 3.2 ]] && coverage run --source=$(python setup.py --name) setup.py test;:'
+#
 :

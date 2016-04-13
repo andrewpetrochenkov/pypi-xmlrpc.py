@@ -1,0 +1,26 @@
+box: python
+build:
+  steps:
+    - script:
+        name : move source
+        # wercker variables:
+        # http://old-devcenter.wercker.com/articles/introduction/pipeline.html
+        code : |-
+            # sometimes scripts requires same folder name as repo
+            # /pipeline/source/ - default $WERCKER_SOURCE_DIR
+            # /pipeline/source/owner/repo/ - new
+            dst="$WERCKER_SOURCE_DIR/$WERCKER_GIT_OWNER/$WERCKER_GIT_REPOSITORY"
+            tmp="$WERCKER_SOURCE_DIR".tmp
+            ( set -x; mv "$WERCKER_SOURCE_DIR" "$tmp" )
+            ( set -x; mkdir -p "${dst%/*}" )
+            ( set -x; mv "$tmp" "$dst" )
+            { set -x; export WERCKER_SOURCE_DIR="$dst"; { set +x; } 2>/dev/null; }
+            { set -x; cd "$WERCKER_SOURCE_DIR" || exit; { set +x; } 2>/dev/null; }
+    - script:
+        name: "init"
+        code: |-
+          ( set -x; bash Tests/install.sh )
+    - script:
+        name: "tests"
+        code: |-
+          ( set -x; bash Tests/run.sh )

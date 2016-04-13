@@ -11,4 +11,4 @@ tty -s && [ -e ~/.command.sh ] && {
 }
 
 # ~/.bashrc: `export -f funcname` - export function to .command
-( set -x; python.setup.py.develop )
+( set -x; python_setup_develop )

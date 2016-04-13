@@ -10,7 +10,8 @@ python:
   - "3.4"
   - "3.5"
   - "3.5-dev" # 3.5 development branch
-  - "nightly" # currently points to 3.6-dev
+  #- "nightly" # currently points to 3.6-dev
+  # nightly python not aviable :( can't test
 
 sudo: false
 
@@ -44,21 +45,14 @@ before_install:
   - env
 
 install:
-  - set -e # Exit immediately if a subshell command exits with a non-zero status (man sh).
-  - '[ -f requirements.txt ] && cat requirements.txt;:'
-  - '[ -f requirements.txt ] && pip install -r requirements.txt;:'
-  - python setup.py install
-  - pip install coveralls
+  - bash Tests/install.sh
 
 before_script:
   - pwd
 
 # command to run tests
 script:
-  - set -e # Exit immediately if a subshell command exits with a non-zero status (man sh).
   - bash Tests/run.sh
-  # python3.2 coverage has syntax error
-  - '[[ $TRAVIS_PYTHON_VERSION != 3.2 ]] && coverage run --source=$(python setup.py --name) setup.py test;:'
 
 after_script:
   -
