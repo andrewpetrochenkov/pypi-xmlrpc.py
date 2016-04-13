@@ -23,8 +23,10 @@ branches:
     - master
 
 git:
-  depth: 2 # fix depth 1 error
-  # depth: 1 
+  depth: 10
+  # known-bug:
+  # fast pushes to github, slow tests (many repos)
+  # travis can't clone required commit with small depth (1,2,...)
   # git checkout -qf <sha>
   # fatal: reference is not a tree: <sha>
 
