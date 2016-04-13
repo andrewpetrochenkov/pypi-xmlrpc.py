@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 __all__=["description"]
-from os.path import *
+from os.path import abspath, dirname, exists, isfile, join
 
 repo = abspath(dirname(dirname(__file__)))
 
 file = join(repo,"description")
-if exists(file):
+if exists(file) and isfile(file):
     description = open(file).read().lstrip().rstrip()
 else:
     if __name__=="__main__":

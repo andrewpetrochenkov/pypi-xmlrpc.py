@@ -5,7 +5,7 @@
 # error: Could not find required distribution <name>
 # fix - install requirements.txt first:
 # 1) pip install -U <name>
-# 2) pip install -r requirements.txt; python install setup.py 
+# 2) pip install -r requirements.txt; python install setup.py
 __all__=["install_requires"]
 from os.path import abspath, dirname, exists, join
 

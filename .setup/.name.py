@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 __all__ = ["name"]
-from os.path import *
+from os.path import abspath, basename, dirname
 
 repo = abspath(dirname(dirname(__file__)))
 

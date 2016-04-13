@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 __all__=["keywords"]
-from os.path import *
+from os.path import abspath, dirname, exists, isfile, join
 
 repo = abspath(dirname(dirname(__file__)))
 

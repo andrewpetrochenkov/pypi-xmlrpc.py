@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 __all__=["platforms"]
-from os.path import *
+from os.path import abspath, dirname, exists, isfile, join
 
 repo = abspath(dirname(dirname(__file__)))
 
 path = join(repo,"platforms.txt")
-if exists(path):
+if exists(path) and isfile(path):
     platforms = open(path).read().lstrip().rstrip()
 else:
     if __name__=="__main__":

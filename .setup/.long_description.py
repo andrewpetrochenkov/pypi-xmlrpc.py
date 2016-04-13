@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 __all__=["long_description"]
-from os.path import *
+from os.path import abspath, dirname, exists, isfile, join
+
 
 repo = abspath(dirname(dirname(__file__)))
 

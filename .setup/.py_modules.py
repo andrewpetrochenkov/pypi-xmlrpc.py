@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 __all__ = ["py_modules", "package_dir"]
 import os
-from os.path import *
+from os.path import abspath, dirname, exists, isfile, join
 
 repo = abspath(dirname(dirname(__file__)))
 

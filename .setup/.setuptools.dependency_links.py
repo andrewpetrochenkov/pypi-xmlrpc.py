@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # setuptools setup(...,dependency_links=[]) keyword
 __all__=["dependency_links"]
-from os.path import *
+from os.path import abspath, dirname, exists, join
 
 repo = abspath(dirname(dirname(__file__)))
 

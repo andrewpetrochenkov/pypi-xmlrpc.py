@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 __all__=["url"]
-from os.path import *
+from os.path import abspath, dirname, exists, isfile, join
 
-repo = dirname(dirname(__file__))
+repo = abspath(dirname(dirname(__file__)))
 if not repo: repo="."
 
 path = join(repo,"url.txt")

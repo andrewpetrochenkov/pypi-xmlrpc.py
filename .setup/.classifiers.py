@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 __all__=["classifiers"]
 import os
-from os.path import *
+from os.path import abspath, dirname, exists, isfile, join
 
+HOME=os.environ["HOME"]
 repo = abspath(dirname(dirname(__file__)))
 
 def read(path):
@@ -16,7 +17,7 @@ def read(path):
 
 classifiers = []
 # ~/.classifiers.txt (default)
-default = read(join(os.environ["HOME"],".classifiers.txt"))
+default = read(join(HOME,".classifiers.txt"))
 # ./.classifiers.txt, ./classifiers.txt (custom, override default)
 custom=read(".classifiers.txt")+read("classifiers.txt")
 for l in custom:
