@@ -9,13 +9,13 @@ repo = abspath(dirname(dirname(__file__)))
 def load_module(path):
     with open(path,'rb') as fp:
         # .hidden.py invisible for mdfind
-        module = imp.load_module(path,fp,path,('.py', 'rb', imp.PY_SOURCE))  
+        module = imp.load_module(path,fp,path,('.py', 'rb', imp.PY_SOURCE))
         # __all__ required
         if not hasattr(module,'__all__'):
             raise ValueError("ERROR: %s __all__ required" % path)
         return module
 
-data_files = [] 
+data_files = []
 path=join(repo,"data_files.py")
 if exists(path):
 	module = load_module(path)

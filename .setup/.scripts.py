@@ -4,19 +4,6 @@ __all__ = ["scripts"]
 import os
 from os.path import *
 
-"""
-known-bugs:
-  script with same name as package not installed
-
-another way: setuptools entry_points
-entry_points = {
-    'console_scripts': [
-        'foo = package.module:func',
-    ],
-}
-"""
-
-
 def valid_script_name(name):
     return name[0] != "." and " " not in name
 

@@ -7,8 +7,7 @@
 # 1) pip install -U <name>
 # 2) pip install -r requirements.txt; python install setup.py 
 __all__=["install_requires"]
-import os
-from os.path import *
+from os.path import abspath, dirname, exists, join
 
 repo = abspath(dirname(dirname(__file__)))
 

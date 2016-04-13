@@ -124,7 +124,7 @@ def main():
             return False
         except ValueError:
             return True
-        except:
+        except Exception:
             return False
 
     kwargs = module_kwargs(sys.modules["__main__"])

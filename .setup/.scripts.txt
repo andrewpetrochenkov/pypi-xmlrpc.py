@@ -1,0 +1,9 @@
+known-bugs:
+   script with same name as package not installed
+
+another way: setuptools entry_points
+entry_points = {
+    'console_scripts': [
+        'foo = package.module:func',
+    ],
+}

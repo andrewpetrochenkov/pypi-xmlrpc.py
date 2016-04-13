@@ -8,7 +8,7 @@ except ImportError:
 import requests
 # me
 from dict import *
-from public import *
+from public import public
 
 
 @public
