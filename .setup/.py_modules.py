@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 __all__ = ["py_modules", "package_dir"]
 import os
-from os.path import abspath, dirname, exists, isdir, join
+from os.path import abspath, dirname, exists, isdir, isfile, join, splitext
 
 repo = abspath(dirname(dirname(__file__)))
 

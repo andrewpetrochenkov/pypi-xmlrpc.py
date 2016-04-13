@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import imp
 import os
-from os.path import *
+from os.path import abspath, dirname, exists, join,splitext
 import sys
 import warnings
 
@@ -53,7 +53,7 @@ SETUPTOOLS_ARGS = [
 ]
 
 
-def pyfiles(path):
+def _pyfiles(path):
     """find python files of a directory"""
     listdir = os.listdir(path)
     listdir = filter(lambda l: splitext(
@@ -61,7 +61,7 @@ def pyfiles(path):
     return listdir
 
 
-def module_kwargs(module):
+def _module_kwargs(module):
     """get module public objects dict"""
     kwargs = dict()
     for k in getattr(module, "__all__"):
@@ -70,7 +70,7 @@ def module_kwargs(module):
     return kwargs
 
 
-def load_module(path):
+def _load_module(path):
     with open(path, 'rb') as fhandler:
         # .hidden.py invisible for mdfind
         module = imp.load_module(
@@ -81,13 +81,13 @@ def load_module(path):
         return module
 
 
-def update(**kwargs):
+def _update(**kwargs):
     for key, value in kwargs.items():
         if key not in sys.modules["__main__"].__all__:
             sys.modules["__main__"].__all__.append(key)
         setattr(sys.modules["__main__"], key, value)
 
-def isstring(value):
+def _isstring(value):
     try:
         int(value)
         return False
@@ -102,7 +102,7 @@ def main():
     repo = abspath(dirname(dirname(__file__)))
     os.chdir(repo)
 
-    files = pyfiles(dirname(__file__))
+    files = _pyfiles(dirname(__file__))
     # RuntimeWarning: Parent module 'modname' not found while handling
     # absolute import
     warnings.simplefilter("ignore", RuntimeWarning)
@@ -110,9 +110,9 @@ def main():
     for file in files:
         try:
             fullpath = join(dirname(__file__), file)
-            module = load_module(fullpath)
-            kwargs = module_kwargs(module)
-            update(**kwargs)
+            module = _load_module(fullpath)
+            kwargs = _module_kwargs(module)
+            _update(**kwargs)
             if len(sys.argv) == 1 and len(kwargs) > 0:
                 print("%s: %s" % (file[1:], kwargs))
         except AttributeError:  # variable from __all__ not initialized
@@ -120,14 +120,14 @@ def main():
     # ~/.setup_kwargs.py
     fullpath = join(os.environ["HOME"], ".setup_kwargs.py")
     if exists(fullpath):
-        module = load_module(fullpath)
-        setup_kwargs = module_kwargs(module)
+        module = _load_module(fullpath)
+        setup_kwargs = _module_kwargs(module)
 
-        update(**setup_kwargs)
+        _update(**setup_kwargs)
         if len(sys.argv) == 1 and len(setup_kwargs) > 0:  # debug
             print("%s: %s" % ("~/.setup_kwargs.py", setup_kwargs))
 
-    kwargs = module_kwargs(sys.modules["__main__"])
+    kwargs = _module_kwargs(sys.modules["__main__"])
     if "name" in kwargs:
         name = kwargs["name"]
         del kwargs["name"]
@@ -138,7 +138,7 @@ def main():
         # (k,v):k),1): # python2
         for i, key in enumerate(sorted(list(kwargs.keys())), 1):  # python3
             value = kwargs[key]
-            str_value = '"%s"' % value if isstring(value) else value
+            str_value = '"%s"' % value if _isstring(value) else value
             comma = "," if i != len(kwargs) else ""
             print("    %s = %s%s" % (key, str_value, comma))
         print(')')
