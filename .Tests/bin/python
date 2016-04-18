@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+{ set +x; } 2>/dev/null
+
+[[ $# == 1 ]] && [ -e "$1" ] && { # python path/to/file.py
+	( set -x; coverage run "$1" ); exit
+}
+# default python
+which="$(which -a python | grep -v "${BASH_SOURCE[0]}" | head -1)"
+[[ -z "$which" ]] && echo "ERROR: default python NOT FOUND" && exit 1
+( set -x; "$which" "$@" )

@@ -47,14 +47,14 @@ before_install:
   - env
 
 install:
-  - bash Tests/install.sh
+  - bash .Tests/install.sh
 
 before_script:
   - pwd
 
 # command to run tests
 script:
-  - bash Tests/run.sh
+  - bash .Tests/run.sh
 
 after_script:
   -

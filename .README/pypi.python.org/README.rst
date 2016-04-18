@@ -3,16 +3,13 @@
 .. image:: https://img.shields.io/pypi/pyversions/pypixmlrpc.svg
    :target: https://pypi.python.org/pypi/pypixmlrpc
 
-.. image:: https://img.shields.io/pypi/pyversions/pypixmlrpc.svg
-   :target: https://pypi.python.org/pypi/pypixmlrpc
-
- |codacy| |landscape| |codeclimate| |scrutinizer|
+|codacy| |landscape| |codeclimate| |scrutinizer|
 
 .. |scrutinizer| image:: https://scrutinizer-ci.com/g/russianidiot/pypixmlrpc.py/badges/quality-score.png?b=master
    :target: https://scrutinizer-ci.com/g/russianidiot/pypixmlrpc.py/master
    :alt: scrutinizer-ci.com
 
-.. |codacy| image:: https://img.shields.io/codacy/None.svg
+.. |codacy| image:: https://img.shields.io/codacy/2d0aefd518834ab49eb01c0d475fcef9.svg
    :target: https://www.codacy.com/app/russianidiot-github/pypixmlrpc-py/dashboard
    :alt: codacy.com
 

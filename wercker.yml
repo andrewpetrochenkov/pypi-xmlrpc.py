@@ -19,8 +19,8 @@ build:
     - script:
         name: "init"
         code: |-
-          ( set -x; bash Tests/install.sh )
+          ( set -x; bash .Tests/install.sh )
     - script:
         name: "tests"
         code: |-
-          ( set -x; bash Tests/run.sh )
+          ( set -x; bash .Tests/run.sh )

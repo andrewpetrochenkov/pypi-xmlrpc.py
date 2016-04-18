@@ -30,10 +30,10 @@ tools:
     runs: 6
 
 before_commands:
-    - bash Tests/install.sh
+    - bash .Tests/install.sh
 
 build:
   tests:
     override:
-      - bash Tests/run.sh 
+      - bash .Tests/run.sh 
 
