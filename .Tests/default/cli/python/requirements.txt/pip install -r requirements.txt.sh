@@ -3,7 +3,7 @@
 
 IFS=
 [[ -n ${#BASH_SOURCE[@]} ]] && [[ $((${#BASH_SOURCE[@]}*$SHLVL)) == 1 ]] && {
-	{ set -x; cd "${BASH_SOURCE[0]%/*/*/*/*/*}"; { set +x; } 2>/dev/null; }
+	{ set -x; cd "${BASH_SOURCE[0]%/*/*/*/*/*/*}"; { set +x; } 2>/dev/null; }
 }
 
 ! [ -e requirements.txt ] && echo "SKIP: requirements.txt NOT EXISTS" && exit 0

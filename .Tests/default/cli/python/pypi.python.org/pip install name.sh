@@ -3,7 +3,7 @@
 
 IFS=
 [[ -n ${#BASH_SOURCE[@]} ]] && [[ $((${#BASH_SOURCE[@]}*$SHLVL)) == 1 ]] && {
-	{ set -x; cd "${BASH_SOURCE[0]%/*/*/*/*/*}"; { set +x; } 2>/dev/null; }
+	{ set -x; cd "${BASH_SOURCE[0]%/*/*/*/*/*/*}"; { set +x; } 2>/dev/null; }
 }
 
 ! [ -e setup.py ] && echo "SKIP: setup.py NOT EXISTS" && exit 0

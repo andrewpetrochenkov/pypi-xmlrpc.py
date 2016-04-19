@@ -11,7 +11,7 @@
 
 { set -x; . "${BASH_SOURCE[0]%/*}"/export.sh; { set +x; } 2>/dev/null; }
 
-for txt in ./Tests/requirements.txt ./requirements.txt; do
+for txt in .Tests/requirements.txt requirements.txt; do
 	[ -f "$txt" ] && [ -s "$txt" ] && {
 	( set -x; cat "$txt" ) || exit
 	( set -x; pip --version ) || exit
