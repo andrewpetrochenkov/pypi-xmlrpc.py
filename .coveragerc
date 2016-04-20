@@ -1,0 +1,14 @@
+[run]
+omit =
+	*/site-packages/*
+	*/Examples/*
+	*/Tests/*
+
+[report]
+exclude_lines =
+    pdefragma: no cover
+     __repr__
+    raise AssertionError
+    raise NotImplementedError
+    if __name__ == .__main__.:
+
