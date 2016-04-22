@@ -5,7 +5,13 @@ import os
 from os.path import *
 
 def valid_script_name(name):
-    return name[0] != "." and " " not in name
+    if name[0] == ".": # skip .hidden files
+        return False
+    if " " in name: # skip filename with ' ' space
+        return False
+    if ".txt" in name: # skip .txt files
+        return False
+    return True
 
 
 repo = abspath(dirname(dirname(__file__)))

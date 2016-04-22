@@ -1,3 +1,2 @@
-codecov
 coverage
 test-scripts

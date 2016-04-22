@@ -8,7 +8,6 @@
 } || { 
 	{ set -x; cd "$PWD"; { set +x; } 2>/dev/null; }
 }
-
 { set -x; . "${BASH_SOURCE[0]%/*}"/export.sh; { set +x; } 2>/dev/null; }
 
 ( set -x; test-scripts .Tests/default ) || exit
@@ -21,6 +20,3 @@
 	# codecov --token=<token> # other ci
 }
 :
-# python3.2 coverage has syntax error
-# '[[ $TRAVIS_PYTHON_VERSION != 3.2 ]] && coverage run --source=$(python setup.py --name) setup.py test;:'
-#
