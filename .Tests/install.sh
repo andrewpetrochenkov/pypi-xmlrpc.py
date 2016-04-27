@@ -10,6 +10,13 @@
 }
 { set -x; . "${BASH_SOURCE[0]%/*}"/export.sh; { set +x; } 2>/dev/null; }
 
+# by default scripts installed to /usr/local/bin/ (must be writable)
+# vitualenv install scripts to  writable path
+# travis uses vitualenv, some CI not
+[[ -z $VIRTUAL_ENV ]] && ! [ -w /usr/local/bin ] && {
+	( set -x; sudo chmod -R 777 /usr/local/bin ) || exit
+}
+
 # 1) .Tests/requirements.txt, requirements.txt
 for txt in .Tests/requirements.txt requirements.txt; do
 	[ -f "$txt" ] && [ -s "$txt" ] && {

@@ -11,5 +11,5 @@ fi
 ! [ -e setup.py ] && echo "ERROR: setup.py NOT EXISTS" && exit 1
 
 # ~/.bashrc: `export -f funcname` - export function to .command
-( set -x; pypi_open )
+( set -x; pypi-open )
 
