@@ -16,12 +16,13 @@ def valid_script_name(name):
 
 repo = abspath(dirname(dirname(__file__)))
 
-path = join(repo, "scripts")
+folder="bin"
+path = join(repo, folder)
 if exists(path) and isdir(path):
     listdir = filter(valid_script_name, os.listdir(path))
     find = map(lambda name: join(path, name), listdir)
     files = filter(isfile, find)
-    scripts = list(map(lambda name: "scripts/%s" % basename(name), files))
+    scripts = list(map(lambda name: "%s/%s" %(folder,basename(name)), files))
     for script in scripts:
         dst = join("/usr/local/bin/%s" % basename(script))
         if exists(dst) and not isfile(dst):

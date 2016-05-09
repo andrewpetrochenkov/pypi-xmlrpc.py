@@ -8,6 +8,10 @@
 } || { 
 	{ set -x; cd "$PWD"; { set +x; } 2>/dev/null; }
 }
+
+# `which -s` OS X only
+[[ -z "$(which python)" ]] && echo "SKIP: python NOT INSTALLED" && exit 0
+
 { set -x; . "${BASH_SOURCE[0]%/*}"/export.sh; { set +x; } 2>/dev/null; }
 
 ( set -x; test-scripts .Tests/default ) || exit

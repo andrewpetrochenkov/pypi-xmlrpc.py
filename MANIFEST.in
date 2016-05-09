@@ -14,5 +14,5 @@ include data_files/*
 
 include Examples/*
 
-include tests/*, Tests/*, test/*, Test/*
+include tests/*, Tests/*
 

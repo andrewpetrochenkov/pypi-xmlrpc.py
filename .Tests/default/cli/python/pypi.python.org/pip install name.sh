@@ -12,7 +12,7 @@ IFS=
 # folder name must be same as original repo name
 # wercker.com set folder to /pipeline/source/
 IFS=.;set -- ${PWD##*/};IFS=
-name="$1"
+name="$(echo "$1" | awk '{print tolower($0)}')"
 
 url="https://pypi.python.org/pypi/$name/json"
 
