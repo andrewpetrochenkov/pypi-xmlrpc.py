@@ -1,18 +1,20 @@
 # http://docs.python.org/2/distutils/sourcedist.html#the-manifest-in-template
 
-# (re)generate the manifest, but not create a source distribution:
+# (re)generate the MANIFEST, but not create a source distribution:
 # python setup.py sdist --manifest-only
 
 recursive-include *.py *.sh *.txt
-include setup/* .setup/*
+include .setup/*
 
+# exclude all bytecode
 global-exclude *.py[co]
 
-exclude LICENSE* README* description
+# exclude .command (OS X)
+global-exclude *.command
+
+exclude LICENSE* README* description MANIFEST.in
 
 include data_files/*
-
 include Examples/*
-
-include tests/*, Tests/*
-
+include Tests/*
+include requirements.txt

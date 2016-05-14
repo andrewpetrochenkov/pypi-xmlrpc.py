@@ -6,8 +6,9 @@ from os.path import abspath, dirname, exists, join
 repo = abspath(dirname(dirname(__file__)))
 
 lines=[]
-for name in ["dependency_links.txt","dependency.txt"]:
-    file = join(repo,name)
+filenames=["dependency_links.txt","dependency.txt"]
+for filename in filenames:
+    file = join(repo,filename)
     if exists(file) and isfile(file):
         lines = open(file).read().splitlines()
         lines = list(filter(lambda l:l.lstrip().rstrip(),lines))

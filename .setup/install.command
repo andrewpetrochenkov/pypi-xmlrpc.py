@@ -10,7 +10,7 @@ tty -s && [ -e ~/.command.sh ] && {
 	{ set -x;  . ~/.command.sh || exit; { set +x; } 2>/dev/null; }
 }
 
-( set -x; python setup.py install )
+( set -x; python setup.py -q install )
 # customize:
 # 1) python wrapper:  ~/.bin/python
 # ~/.bashrc: export PATH=~/.bin:$PATH

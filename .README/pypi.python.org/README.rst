@@ -28,7 +28,6 @@ Install
 
 Usage
 `````
-
 .. code-block:: python
 
 	>>> from pypixmlrpc import *

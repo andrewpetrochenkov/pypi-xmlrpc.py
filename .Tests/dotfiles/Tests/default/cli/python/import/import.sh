@@ -11,7 +11,7 @@ IFS=
 [[ $PWD != *.py ]] && exit 0
 
 IFS=.;set -- ${PWD##*/};IFS=
-name="$(echo "$1" | awk '{print tolower($0)}')"
+name="$1"
 
 ( set -x; python -c "import $name" ) || exit
 # raise AttributeError if invalid __all__
