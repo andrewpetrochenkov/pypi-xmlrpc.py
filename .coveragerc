@@ -1,9 +1,4 @@
-[run]
-omit =
-	*/site-packages/*
-	*/Examples/*
-	*/Tests/*
-
+# http://coverage.readthedocs.io/en/latest/config.html
 [report]
 exclude_lines =
     pdefragma: no cover
@@ -12,3 +7,6 @@ exclude_lines =
     raise NotImplementedError
     if __name__ == .__main__.:
 
+omit = 
+    Examples/*
+    Tests/*
