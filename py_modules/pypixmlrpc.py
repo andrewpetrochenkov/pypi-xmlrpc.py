@@ -63,7 +63,7 @@ class Server:
         )
         for k in data.keys():
             if data[k] == 'UNKNOWN':
-                data[k] is None
+                data[k]=None
         return data
 
     def release_downloads(self, package_name, version):
@@ -79,12 +79,12 @@ class Server:
         Retrieve a list of download URLs for the given package release. Returns a list of dicts with the following key
         """
         response = self._ServerProxy.release_urls(pkg, version)
-        list = []
+        l = []
         for d in response:
             dt = datetime.strptime(str(d["upload_time"]))
             d["upload_time"] = dt.isoformat()
-            list.append(d)
-        return dict(list)
+            l.append(d)
+        return l
 
     def user_packages(self, user):
         """
