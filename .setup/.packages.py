@@ -1,27 +1,30 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-__all__=["packages"]
 import os
-from os.path import *
+from __init__ import REPO
 
-repo = abspath(dirname(dirname(__file__)))
+__all__ = ["packages"]
 
 # distname.py/
 # distname.py/packages/
 # distname.py/packages/pkgname1/
 # distname.py/packages/pkgname2/
-path = join(repo,"packages")
-if exists(path) and isdir(path):
-    names = os.listdir(path)
-    find = list(map(lambda name:join(path,name),names))
-    find = list(filter(lambda path:isdir(path),find))
-    find = list(filter(lambda path:exists(join(path,"__init__.py")),find))
-    packages = list(map(basename,find))
+
+
+def _packages(path):
+    listdir = os.listdir(path)
+    for l in listdir:
+        if os.path.exists(os.path.join(path, l, "__init__.py")):
+            yield l
+
+path = os.path.join(REPO, "packages")
+if os.path.exists(path) and os.path.isdir(path):
+    packages = list(_packages(path))
 else:
-    if __name__=="__main__":
+    if __name__ == "__main__":
         print("SKIP: %s/ NOT EXISTS" % path)
 
-if __name__=="__main__":
+if __name__ == "__main__":
     for k in __all__:
         if k in globals():
-            print("%s: %s" % (k,globals()[k]))
+            print("%s: %s" % (k, globals()[k]))

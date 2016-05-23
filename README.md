@@ -3,7 +3,7 @@
 [![codacy.com](https://img.shields.io/codacy/2d0aefd518834ab49eb01c0d475fcef9.svg)](https://www.codacy.com/app/russianidiot-github/pypixmlrpc-py/dashboard)[![landscape.io](https://landscape.io/github/russianidiot/pypixmlrpc.py/master/landscape.svg?style=flat)](https://landscape.io/github/russianidiot/pypixmlrpc.py/master)[![Code Climate](https://img.shields.io/codeclimate/github/russianidiot/pypixmlrpc.py.svg)](https://codeclimate.com/github/russianidiot/pypixmlrpc.py)
 [![Code Health](https://scrutinizer-ci.com/g/russianidiot/pypixmlrpc.py/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/russianidiot/pypixmlrpc.py)
 
-[![Build Status](https://travis-ci.org/russianidiot/pypixmlrpc.py.svg?branch=master)](https://travis-ci.org/russianidiot/pypixmlrpc.py)[![drone.io](https://drone.io/github.com/russianidiot/pypixmlrpc.py/status.png)](https://drone.io/github.com/russianidiot/pypixmlrpc.py)[![Wercker](https://img.shields.io/wercker/ci/russianidiot/pypixmlrpc.py.svg)](https://app.wercker.com/#applications/5702b5e6a7bb73af2515f8d7/)
+[![Build Status](https://travis-ci.org/russianidiot/pypixmlrpc.py.svg?branch=master)](https://travis-ci.org/russianidiot/pypixmlrpc.py)[![drone.io](https://drone.io/github.com/russianidiot/pypixmlrpc.py/status.png)](https://drone.io/github.com/russianidiot/pypixmlrpc.py)[![Wercker](https://app.wercker.com/status/dcbb3555061ed95f4da533e02bbc4d98/s/master)](https://app.wercker.com/#applications/5702b5e6a7bb73af2515f8d7/)
 [![codecov.io](https://codecov.io/github/russianidiot/pypixmlrpc.py/coverage.svg?branch=master)](https://codecov.io/github/russianidiot/pypixmlrpc.py?branch=master)
 
 [![PyPI](https://img.shields.io/pypi/v/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)

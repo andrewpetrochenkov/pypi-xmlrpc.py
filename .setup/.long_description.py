@@ -1,19 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-__all__=["long_description"]
-from os.path import abspath, dirname, exists, isfile, join
+import os
+from __init__ import REPO, read
 
+__all__ = ["long_description"]
 
-repo = abspath(dirname(dirname(__file__)))
+for name in ["README.rst", "README", "README.txt"]:
+    fullpath = os.path.join(REPO, name)
+    if not os.path.exists(fullpath):
+        continue
+    if not os.path.isfile(fullpath):
+        continue
+    long_description = read(fullpath)
+    break
 
-for name in ["README.rst","README","README.txt"]:
-    fullpath = join(repo,name)
-    if not exists(fullpath): continue
-    if not isfile(fullpath): continue
-    long_description = open(fullpath).read()
-
-if __name__=="__main__":
-	for k in __all__:
-		if k in globals():
-			print("%s: %s" % (k,globals()[k]))
-
+if __name__ == "__main__":
+    for k in __all__:
+        if k in globals():
+            print("%s: %s" % (k, globals()[k]))

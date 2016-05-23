@@ -1,32 +1,40 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-__all__ = ["scripts"]
 import os
-from os.path import *
+
+__all__ = ["scripts"]
+
 
 def valid_script_name(name):
-    if name[0] == ".": # skip .hidden files
+    if name[0] == ".":  # skip .hidden files
         return False
-    if " " in name: # skip filename with ' ' space
+    if " " in name:  # skip filename with ' ' space
         return False
-    if ".txt" in name: # skip .txt files
+    if ".txt" in name:  # skip .txt files
         return False
     return True
 
 
-repo = abspath(dirname(dirname(__file__)))
+def _scripts(path):
+    listdir = os.listdir(path)
+    for l in listdir:
+        if not valid_script_name(l):
+            continue
+        dst = os.path.join("/usr/local/bin/%s" % l)
+        if os.path.exists(dst) and not os.path.isfile(dst):
+            raise OSError("ERROR: %s EXISTS and NOT FILE" % dst)
+        fullpath = os.path.join(path, l)
+        if os.path.isfile(fullpath):
+            yield os.path.join(folder, l)
 
-folder="bin"
-path = join(repo, folder)
-if exists(path) and isdir(path):
-    listdir = filter(valid_script_name, os.listdir(path))
-    find = map(lambda name: join(path, name), listdir)
-    files = filter(isfile, find)
-    scripts = list(map(lambda name: "%s/%s" %(folder,basename(name)), files))
-    for script in scripts:
-        dst = join("/usr/local/bin/%s" % basename(script))
-        if exists(dst) and not isfile(dst):
-            print("ERROR: %s EXISTS and NOT FILE" % dst)
+
+repo = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+
+
+folder = "bin"
+path = os.path.join(repo, folder)
+if os.path.exists(path) and os.path.isdir(path):
+    scripts = list(_scripts(path))
 else:
     if __name__ == "__main__":
         print("SKIP: %s/ NOT EXISTS" % path)

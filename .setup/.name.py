@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-__all__ = ["name"]
-from os.path import abspath, basename, dirname
+import os
+from __init__ import REPO
 
-repo = abspath(dirname(dirname(__file__)))
+__all__ = ["name"]
 
 # default pkgname
-name = basename(repo).lower().split(".")[0]
+name = os.path.basename(REPO).lower().split(".")[0]
 
 
 if __name__ == "__main__":

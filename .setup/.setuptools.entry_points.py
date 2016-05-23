@@ -1,21 +1,19 @@
 #!/usr/bin/env python
 # setuptools setup(...,entry_points=[]) keyword
-__all__=["entry_points"]
-from os.path import *
+import os
+from __init__ import REPO, readlines
 
-repo = abspath(dirname(dirname(__file__)))
+__all__ = ["entry_points"]
 
 # ./entry_points.txt
-path = join(repo,"entry_points.txt")
-if exists(path) and isfile(path):
-    lines = open(path).read().splitlines()
-    lines = list(filter(lambda l:l.lstrip().rstrip(),lines))
-    entry_points=lines
+path = os.path.join(REPO, "entry_points.txt")
+if os.path.exists(path) and os.path.isfile(path):
+    entry_points = readlines(path)
 else:
-    if __name__=="__main__":
+    if __name__ == "__main__":
         print("SKIP: %s NOT EXISTS" % path)
 
-if __name__=="__main__":
-	for k in __all__:
-		if k in globals():
-			print("%s: %s" % (k,globals()[k]))
+if __name__ == "__main__":
+    for k in __all__:
+        if k in globals():
+            print("%s: %s" % (k, globals()[k]))

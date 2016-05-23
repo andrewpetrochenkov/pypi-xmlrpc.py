@@ -78,7 +78,7 @@ Feedback |github_issues| |gitter| |github_follow|
 
 `README.rst`_  - generated with `readmemako.py`_ (python+ `mako`_ templates) and `.README`_ dotfiles
 
-.. _README.rst: https://github.com/russianidiot/pypixmlrpc.py/blob/master/.README/pypi.python.org/README.rst
+.. _README.rst: https://github.com/russianidiot/pypixmlrpc.py/blob/master/README.rst
 .. _readmemako.py: http://github.com/russianidiot/readmemako.py/
 .. _mako: http://www.makotemplates.org/
 .. _.README: https://github.com/russianidiot-dotfiles/.README
