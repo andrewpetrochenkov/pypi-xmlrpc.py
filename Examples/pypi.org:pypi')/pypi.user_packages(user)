@@ -3,8 +3,8 @@ import os
 from os.path import *
 from pypixmlrpc import *
 
-offline=join(os.environ["HOME"],".offline")
+offline = join(os.environ["HOME"], ".offline")
 if not exists(offline):
-	user="kennethreitz"
-	list=pypi.user_packages(user)
-	print(list)
+    user = "kennethreitz"
+    list = pypi.user_packages(user)
+    print(list)

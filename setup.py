@@ -5,14 +5,22 @@ import sys
 
 __all__ = []
 
-# __pycache__/ conflict with setuptools
-sys.dont_write_bytecode = True  # REQUIRED!
+# repo/setup.py 		(this file)
+# repo/.setup/__init.py (imported by setup.py)
+# repo/.setup/.*.py 	(imported by __init__.py)
 
-repo = os.path.abspath(os.path.dirname(__file__))
+# exclude .pyc, __pycache__/ (python3+)
+# disable byte compiling:
+# 	1) sys.dont_write_bytecode = True
+# 	2) python -B setup.py
+# 	3) PYTHONDONTWRITEBYTECODE=true (enviroment variable)
+# MANIFEST.in:
+# 	global-exclude *.py[co]
+# 	exclude __pycache__/*
 
-# repo/setup.py 	- this file
-# repo/.setup/*.py 	- python files imported by setup.py
-setup = os.path.join(repo, ".setup")
+REPO = os.path.abspath(os.path.dirname(__file__))
+
+setup = os.path.join(REPO, ".setup")
 if os.path.exists(setup) and os.path.isdir(setup):
     sys.path.append(setup)
 else:

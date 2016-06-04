@@ -1,20 +1,20 @@
 # http://docs.python.org/2/distutils/sourcedist.html#the-manifest-in-template
 
-# (re)generate the MANIFEST, but not create a source distribution:
-# python setup.py sdist --manifest-only
+# python setup.py dist arguments:
+# --no-defaults 	(disable the standard “include” set)
+# --no-prune 		(disable the standard “exclude” set)
+# -o, --manifest-only 	(generate the MANIFEST only)
 
-recursive-include *.py *.sh *.txt
-include .setup/*
+# MANIFEST.in default "include" set:
+# https://docs.python.org/2/distutils/sourcedist.html#specifying-the-files-to-distribute
 
-# exclude all bytecode
-global-exclude *.py[co]
+# MANIFEST.in syntax:
+# https://docs.python.org/2/distutils/sourcedist.html#commands
 
+# exclude all bytecode (excluded by default)
 # exclude .command (OS X)
-global-exclude *.command
+global-exclude *.py[co] *.command
 
-exclude LICENSE* README* description MANIFEST.in
+exclude __pycache__/* LICENSE* README* description
 
-include data_files/*
-include Examples/*
-include Tests/*
-include requirements.txt
+include */*.py data_files/* Examples/* Tests/* *.txt

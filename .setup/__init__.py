@@ -7,67 +7,6 @@ import warnings
 
 __all__ = ["REPO", "read", "readlines", "load_module"]
 
-# __pycache__/ conflict with setuptools
-sys.dont_write_bytecode = True  # REQUIRED!
-
-# 1) distutils (Python Standart Library)
-#   docs.python.org/2/distutils/setupscript.html
-#   docs.python.org/3/distutils/setupscript.html
-# python setup.py --manifest-only
-# 2) setuptools (+easy_install tool)
-#   pypi.python.org/pypi/setuptools
-#   pythonhosted.org/setuptools/setuptools.html
-
-# setuptools additional setup(name,**kwargs) keywords
-SETUPTOOLS_KWARGS = [
-    "include_package_data",  # True/False
-    "exclude_package_data",  # True/False
-    "package_data",  # True/False
-    "zip_safe",  # True/False
-    "install_requires",  # [...]
-    "entry_points",  # [...]
-    "extras_require",  # [...]
-    "setup_requires",  # [...]
-    "dependency_links",  # [...]
-    "namespace_packages",  # [...]
-    "test_suite",  # ''
-    "tests_require",  # ''
-    "test_loader"  # ''
-]
-# setuptools `python setup.py` Extra commands (python setup.py --help):
-SETUPTOOLS_ARGS = [
-    # save supplied options to setup.cfg or other config file
-    "saveopts",
-    # Run unit tests using testr
-    "testr",
-    # install package in 'development mode'
-    "develop",
-    # Upload documentation to PyPI
-    "upload_docs",
-    # run unit tests after in-place build
-    "test",
-    # set an option in setup.cfg or another config file
-    "setopt",
-    # Run unit tests using nosetests
-    "nosetests",
-    # Install an .egg-info directory for the package
-    "install_egg_info",
-    # delete older distributions, keeping N newest files
-    "rotate",
-    # create a Mac OS X mpkg distribution for Installer.app
-    "bdist_mpkg",
-    # create a distribution's .egg-info directory
-    "egg_info",
-    # create a Mac OS X application or plugin from Python scripts
-    "py2app",
-    # define a shortcut to invoke one or more commands
-    "alias",
-    # Find/get/install Python packages
-    "easy_install",
-    # create an "egg" distribution
-    "bdist_egg"
-]
-
 REPO = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
 
@@ -177,38 +116,32 @@ def main():
             print("    %s = %s%s" % (key, str_value, comma))
         print(')')
 
-    setuptools = False  # check for setuptools
-    # `python setup.py` args
-    for arg in SETUPTOOLS_ARGS:
-        if arg in sys.argv:
-            setuptools = True
-    # setup(name,**kwargs) kwargs
-    for arg in SETUPTOOLS_KWARGS:
-        if arg in kwargs and kwargs[arg] is not None:
-            value = kwargs[arg]
-            if value != [] and value != "" and value != {} and value:
-                # sys.stderr.write("setuptools arg = %s" % arg)
-                setuptools = True
-
-    if sys.argv[-1] == "--manifest-only":  # distutils only
+    # 1) distutils (Python Standart Library)
+    #   https://docs.python.org/2/distutils/setupscript.html
+    #   https://docs.python.org/2/distutils/apiref.html (arguments)
+    # 2) setuptools (extra commands and arguments)
+    #   extra commands:
+    # http://pythonhosted.org/setuptools/setuptools.html#command-reference
+    #   extra arguments:
+    # http://pythonhosted.org/setuptools/setuptools.html#new-and-changed-setup-keywords
+    setuptools = True
+    if "--manifest-only" in sys.argv:  # distutils only
         setuptools = False
-
     if setuptools:
         try:
-            if sys.argv[-1] == "install":
-                print("from setuptools import setup")
-            from setuptools import setup
-            kwargs["zip_safe"]=False
+            import setuptools
+            if "install" in sys.argv:
+                print("setuptools.__version__: %s" % setuptools.__version__)
+            setup = setuptools.setup
+            if "zip_safe" not in kwargs:
+                kwargs["zip_safe"] = False
         except ImportError:
-            if sys.argv[-1] == "install":
-                print("setuptools not installed")  # use distutils
-            if sys.argv[-1] == "install":
-                print("from distutils.core import setup")
-            from distutils.core import setup  # default
-    else:
-        if sys.argv[-1] == "install":
-            print("from distutils.core import setup")
-        from distutils.core import setup  # default
+            setuptools = False
+    if not setuptools:
+        if "install" in sys.argv:
+            import distutils
+            print("distutils.__version__: %s" % distutils.__version__)
+        from distutils.core import setup
 
     if len(sys.argv) == 1:
         return
