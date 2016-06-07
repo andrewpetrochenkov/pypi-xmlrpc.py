@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 import os
-from os.path import *
-from pypixmlrpc import *
+from pypixmlrpc import pypi
 
-offline = join(os.environ["HOME"], ".offline")
-if not exists(offline):
+offline = os.path.join(os.environ["HOME"], ".offline")
+if not os.path.exists(offline):
     list = pypi.list_packages()
     print(list)

@@ -61,7 +61,7 @@ def _update(**kwargs):
         setattr(sys.modules["__main__"], key, value)
 
 
-def _isstring(value):
+def isstring(value):
     try:
         int(value)
         return False
@@ -69,6 +69,10 @@ def _isstring(value):
         return True
     except Exception:
         return False
+
+def info(string):
+    if len(sys.argv) == 1:
+        print(string)
 
 
 def main():
@@ -86,8 +90,8 @@ def main():
             module = load_module(fullpath)
             kwargs = moduledict(module)
             _update(**kwargs)
-            if len(sys.argv) == 1 and len(kwargs) > 0:
-                print("%s: %s" % (file[1:], kwargs))
+            if kwargs:
+                info(".setup/%s: %s" % (file[1:], kwargs))
         except AttributeError:  # variable from __all__ not initialized
             continue
     # ~/.setup_kwargs.py
@@ -97,8 +101,9 @@ def main():
         setup_kwargs = moduledict(module)
 
         _update(**setup_kwargs)
-        if len(sys.argv) == 1 and len(setup_kwargs) > 0:  # debug
-            print("%s: %s" % ("~/.setup_kwargs.py", setup_kwargs))
+        info("%s: %s" % ("~/.setup_kwargs.py", setup_kwargs))
+    else:
+        info("SKIP: %s NOT EXISTS" % fullpath)
 
     kwargs = moduledict(sys.modules["__main__"])
     if "name" in kwargs:
@@ -107,11 +112,9 @@ def main():
 
     if len(sys.argv) == 1 and kwargs:  # debug
         print('\nsetup(name="%s",' % name)
-        # for i,(k,v) in enumerate(sorted(kwargs.iteritems(),key=lambda
-        # (k,v):k),1): # python2
         for i, key in enumerate(sorted(list(kwargs.keys())), 1):  # python3
             value = kwargs[key]
-            str_value = '"%s"' % value if _isstring(value) else value
+            str_value = '"%s"' % value if isstring(value) else value
             comma = "," if i != len(kwargs) else ""
             print("    %s = %s%s" % (key, str_value, comma))
         print(')')

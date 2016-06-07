@@ -11,5 +11,5 @@ fi
 ! [ -e setup.py ] && echo "ERROR: setup.py NOT EXISTS" && exit 1
 
 name="$(python setup.py --name)" || exit
-url="https://pypi.python.org/pypi/$name"
+url="https://testpypi.python.org/pypi/$name"
 ( set -x; open "$url" )

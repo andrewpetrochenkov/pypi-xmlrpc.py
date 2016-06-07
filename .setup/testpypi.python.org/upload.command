@@ -10,7 +10,8 @@ tty -s && [ -e ~/.command.sh ] && {
 	{ set -x;  . ~/.command.sh || exit; { set +x; } 2>/dev/null; }
 }
 
-( set -x; python setup.py -q sdist upload -r testpypi )
+( set -x; python setup.py -q sdist upload -r testpypi ) || exit
+( set -x; . "${BASH_SOURCE[0]%/*}"/open.command )
 # customize:
 # 1) python wrapper:  ~/.bin/python
 # ~/.bashrc: export PATH=~/.bin:$PATH
