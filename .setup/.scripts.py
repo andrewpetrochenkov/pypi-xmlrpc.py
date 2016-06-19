@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
+from __init__ import REPO
 
 __all__ = ["scripts"]
 
@@ -27,12 +28,8 @@ def _scripts(path):
         if os.path.isfile(fullpath):
             yield os.path.join(folder, l)
 
-
-repo = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-
-
 folder = "bin"
-path = os.path.join(repo, folder)
+path = os.path.join(REPO, folder)
 if os.path.exists(path) and os.path.isdir(path):
     scripts = list(_scripts(path))
 else:

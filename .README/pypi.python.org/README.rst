@@ -6,19 +6,19 @@
 |codacy| |landscape| |codeclimate| |scrutinizer|
 
 .. |scrutinizer| image:: https://scrutinizer-ci.com/g/russianidiot/pypixmlrpc.py/badges/quality-score.png?b=master
-   :target: https://scrutinizer-ci.com/g/russianidiot/pypixmlrpc.py/master
+   :target: https://scrutinizer-ci.com/g/russianidiot/pypixmlrpc.py/
    :alt: scrutinizer-ci.com
 
-.. |codacy| image:: https://img.shields.io/codacy/2d0aefd518834ab49eb01c0d475fcef9.svg
+.. |codacy| image:: https://api.codacy.com/project/badge/Grade/2d0aefd518834ab49eb01c0d475fcef9
    :target: https://www.codacy.com/app/russianidiot-github/pypixmlrpc-py/dashboard
    :alt: codacy.com
 
-.. |codeclimate| image:: https://img.shields.io/codeclimate/github/russianidiot/pypixmlrpc.py.svg
+.. |codeclimate| image:: https://codeclimate.com/github/russianidiot/pypixmlrpc.py/badges/gpa.svg
    :target: https://codeclimate.com/github/russianidiot/pypixmlrpc.py
    :alt: codeclimate.com
 
 .. |landscape| image:: https://landscape.io/github/russianidiot/pypixmlrpc.py/master/landscape.svg?style=flat
-   :target: https://landscape.io/github/russianidiot/pypixmlrpc.py/master
+   :target: https://landscape.io/github/russianidiot/pypixmlrpc.py/master/landscape.svg?style=flat
    :alt: landscape.io
 
 Install
@@ -28,6 +28,7 @@ Install
 
 Usage
 `````
+
 .. code-block:: python
 
 	>>> from pypixmlrpc import *

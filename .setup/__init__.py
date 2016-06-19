@@ -70,6 +70,7 @@ def isstring(value):
     except Exception:
         return False
 
+
 def info(string):
     if len(sys.argv) == 1:
         print(string)
@@ -79,14 +80,15 @@ def main():
     sys.modules["__main__"].__all__ = []
     os.chdir(REPO)
 
-    files = _pyfiles(os.path.dirname(__file__))
+    _setup = os.path.abspath(os.path.dirname(__file__))
+    files = _pyfiles(_setup)
     # RuntimeWarning: Parent module 'modname' not found while handling
     # absolute import
     warnings.simplefilter("ignore", RuntimeWarning)
 
     for file in files:
         try:
-            fullpath = os.path.join(os.path.dirname(__file__), file)
+            fullpath = os.path.join(_setup, file)
             module = load_module(fullpath)
             kwargs = moduledict(module)
             _update(**kwargs)
