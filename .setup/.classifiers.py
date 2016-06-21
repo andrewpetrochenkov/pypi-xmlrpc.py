@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
-from __init__ import REPO, readlines
+from __init__ import HOME, REPO, readlines
 
 __all__ = ["classifiers"]
-
-HOME = os.environ["HOME"]
 
 classifiers = []
 # ~/.classifiers.txt (default)

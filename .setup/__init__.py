@@ -5,10 +5,19 @@ import os
 import sys
 import warnings
 
-__all__ = ["REPO", "read", "readlines", "load_module"]
+__all__ = ["HOME","REPO", "read", "readlines", "load_module"]
 
 REPO = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-
+if 'HOME' in os.environ:
+    HOME = os.environ['HOME']
+elif os.name == 'posix':
+    HOME = os.path.expanduser("~")
+elif os.name == 'nt':
+    if 'HOMEPATH' in os.environ:
+        if 'HOMEDRIVE' in os.environ:
+            HOME = os.environ['HOMEDRIVE'] + os.environ['HOMEPATH']
+        else:
+            HOME = os.environ['HOMEPATH']
 
 def read(path):
     if os.path.exists(path) and os.path.isfile(path):
@@ -97,7 +106,7 @@ def main():
         except AttributeError:  # variable from __all__ not initialized
             continue
     # ~/.setup_kwargs.py
-    fullpath = os.path.join(os.environ["HOME"], ".setup_kwargs.py")
+    fullpath = os.path.join(HOME, ".setup_kwargs.py")
     if os.path.exists(fullpath):
         module = load_module(fullpath)
         setup_kwargs = moduledict(module)

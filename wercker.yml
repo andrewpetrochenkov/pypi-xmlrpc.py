@@ -20,6 +20,13 @@ build:
             { set -x; export WERCKER_SOURCE_DIR="$dst"; { set +x; } 2>/dev/null; }
             { set -x; cd "$WERCKER_SOURCE_DIR" || exit; { set +x; } 2>/dev/null; }
     - script:
+        name: "virtualenv"
+        code: |-
+          ( set -x; pip install virtualenv ) || exit
+          path=~/.env_path/default
+          ( set -x; virtualenv -q "$path" ) || exit
+          . "$path"/bin/activate
+    - script:
         name: "init"
         code: |-
           ( set -x; bash .Tests/install.sh )
