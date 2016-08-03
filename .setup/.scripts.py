@@ -7,7 +7,7 @@ __all__ = ["scripts"]
 
 
 def valid_script_name(name):
-    if name[0] == ".":  # skip .hidden files
+    if name == ".DS_Store":
         return False
     if " " in name:  # skip filename with ' ' space
         return False
@@ -34,7 +34,7 @@ if os.path.exists(path) and os.path.isdir(path):
     scripts = list(_scripts(path))
 else:
     if __name__ == "__main__":
-        print("SKIP: %s/ NOT EXISTS" % path)
+        print("%s/ NOT EXISTS" % path)
 
 if __name__ == "__main__":
     for k in __all__:

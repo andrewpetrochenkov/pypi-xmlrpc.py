@@ -5,7 +5,7 @@ import os
 import sys
 import warnings
 
-__all__ = ["HOME","REPO", "read", "readlines", "load_module"]
+__all__ = ["HOME", "REPO", "read", "readlines", "load_module"]
 
 REPO = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 if 'HOME' in os.environ:
@@ -18,6 +18,7 @@ elif os.name == 'nt':
             HOME = os.environ['HOMEDRIVE'] + os.environ['HOMEPATH']
         else:
             HOME = os.environ['HOMEPATH']
+
 
 def read(path):
     if os.path.exists(path) and os.path.isfile(path):
@@ -105,14 +106,18 @@ def main():
                 info(".setup/%s: %s" % (file[1:], kwargs))
         except AttributeError:  # variable from __all__ not initialized
             continue
-    # ~/.setup_kwargs.py
-    fullpath = os.path.join(HOME, ".setup_kwargs.py")
-    if os.path.exists(fullpath):
+    # $SETUP_IMPORT
+    if "SETUP_IMPORT" in os.environ:
+        SETUP_IMPORT = os.environ["SETUP_IMPORT"]
+        if not os.path.exists(SETUP_IMPORT):
+            raise OSError("%s NOT EXISTS" % SETUP_IMPORT)
+        if not os.path.isfile(SETUP_IMPORT):
+            raise OSError("%s NOT FILE" % SETUP_IMPORT)
         module = load_module(fullpath)
         setup_kwargs = moduledict(module)
 
         _update(**setup_kwargs)
-        info("%s: %s" % ("~/.setup_kwargs.py", setup_kwargs))
+        info("%s: %s" % (SETUP_IMPORT, setup_kwargs))
     else:
         info("SKIP: %s NOT EXISTS" % fullpath)
 

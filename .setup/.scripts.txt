@@ -1,5 +1,6 @@
 known-bugs:
-   script with same name as package not installed
+   
+1) script with same name as package not installed
 
 another way: setuptools entry_points
 entry_points = {
@@ -7,3 +8,6 @@ entry_points = {
         'foo = package.module:func',
     ],
 }
+
+2) UnicodeEncodeError: 'ascii' codec can't encode character ... in position ...
+

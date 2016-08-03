@@ -5,10 +5,12 @@ from __init__ import REPO
 
 __all__ = ["packages", "package_dir", "package_data"]
 
-# distname.py/
-# distname.py/packages/
-# distname.py/packages/pkgname1/
-# distname.py/packages/pkgname2/
+# repo/
+# repo/packages/
+# repo/packages/pkgname1/*.py
+# repo/packages/pkgname1/data/*
+# repo/packages/pkgname2/*.py
+# repo/packages/pkgname2/data/*
 
 
 def _packages(path):
@@ -24,11 +26,14 @@ if os.path.exists(path) and os.path.isdir(path):
         package_dir = dict()
         package_data = dict()
         for package in packages:
-            package_dir[package] = "packages/%s" % package
-            package_data[package] = ['*']
+            path = "packages/%s" % package
+            package_dir[package] = path
+            data = '%s/data' % path
+            if os.path.exists(data):
+                package_data[package] = ['data/*']
 else:
     if __name__ == "__main__":
-        print("SKIP: %s/ NOT EXISTS" % path)
+        print("%s/ NOT EXISTS" % path)
 
 if __name__ == "__main__":
     for k in __all__:

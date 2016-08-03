@@ -11,6 +11,8 @@ if os.path.exists(path) and os.path.isfile(path):
 else:
     if __name__ == "__main__":
         print("SKIP: %s NOT EXISTS" % path)
+    if "KEYWORDS" in os.environ:
+        keywords = os.environ["KEYWORDS"]
 
 if __name__ == "__main__":
     for k in __all__:

@@ -6,8 +6,9 @@ from __init__ import REPO
 __all__ = ["name"]
 
 # default pkgname
-name = os.path.basename(REPO).lower().split(".")[0]
-
+name = os.path.basename(REPO).split(".")[0]
+if "NAME" in os.environ:
+    name = os.environ["NAME"]
 
 if __name__ == "__main__":
     for k in __all__:

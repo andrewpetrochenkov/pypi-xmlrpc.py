@@ -14,6 +14,8 @@ for filename in filenames:
         description = read(path)
 if description is None and __name__ == "__main__":
     print("SKIP: %s NOT EXISTS" % ", ".join(filenames))
+if not description and "DESCRIPTION" in os.environ:
+    description = os.environ["DESCRIPTION"]
 
 if __name__ == "__main__":
     for k in __all__:

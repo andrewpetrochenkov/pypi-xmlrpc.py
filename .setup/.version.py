@@ -10,7 +10,9 @@ if os.path.exists(path) and os.path.isfile(path):
     version = read(path)
 else:
     if __name__ == "__main__":
-        print("SKIP: %s NOT EXISTS" % path)
+        print("%s NOT EXISTS" % path)
+    if "VERSION" in os.environ:
+        version = os.environ["VERSION"]
 
 if __name__ == "__main__":
     for k in __all__:

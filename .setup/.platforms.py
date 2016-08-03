@@ -10,7 +10,9 @@ if os.path.exists(path) and os.path.isfile(path):
     platforms = read(path)
 else:
     if __name__ == "__main__":
-        print("SKIP: %s NOT EXISTS" % path)
+        print("%s NOT EXISTS" % path)
+    if "PLATFORMS" in os.environ:
+        platforms = os.environ["PLATFORMS"]
 
 if __name__ == "__main__":
     for k in __all__:

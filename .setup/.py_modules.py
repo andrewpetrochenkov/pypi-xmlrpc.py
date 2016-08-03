@@ -23,7 +23,7 @@ if os.path.exists(path) and os.path.isdir(path):  # ./py_modules/
         package_dir = {'': "py_modules"}
 else:
     if __name__ == "__main__":
-        print("SKIP: %s/ NOT EXISTS" % path)
+        print("%s/ NOT EXISTS" % path)
 
 if __name__ == "__main__":
     for k in __all__:

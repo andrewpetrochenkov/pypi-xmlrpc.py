@@ -1,4 +1,6 @@
-![python](https://img.shields.io/badge/language-python-blue.svg)[![PyPI](https://img.shields.io/pypi/pyversions/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)
+![python](https://img.shields.io/badge/language-python-blue.svg)
+
+[![PyPI](https://img.shields.io/pypi/pyversions/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)[![PyPI](https://img.shields.io/pypi/v/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)
 
 [![codacy.com](https://api.codacy.com/project/badge/Grade/2d0aefd518834ab49eb01c0d475fcef9)](https://www.codacy.com/app/russianidiot-github/pypixmlrpc-py/dashboard)
 [![landscape.io](https://landscape.io/github/russianidiot/pypixmlrpc.py/master/landscape.svg?style=flat)](https://landscape.io/github/russianidiot/pypixmlrpc.py)
@@ -12,10 +14,6 @@
 [![shippable.com](https://api.shippable.com/projects/57068cbb2a8192902e1bbbd8/badge?branch=master)](https://app.shippable.com/projects/57068cbb2a8192902e1bbbd8)
 [![travis-ci.org](https://travis-ci.org/russianidiot/pypixmlrpc.py.svg)](https://travis-ci.org/russianidiot/pypixmlrpc.py)
 [![wercker.com](https://app.wercker.com/status/dcbb3555061ed95f4da533e02bbc4d98/s/master)](https://app.wercker.com/#applications/5702b5e6a7bb73af2515f8d7)
-
-[![PyPI](https://img.shields.io/pypi/v/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)
-[![PyPI](https://img.shields.io/pypi/dm/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)
-[![PyPI](https://img.shields.io/pypi/dd/pypixmlrpc.svg)](https://pypi.python.org/pypi/pypixmlrpc)
 
 <p align="center">
     <b>pypi XML-RPC wrapper</b>
@@ -51,7 +49,6 @@ Sources:
 *	[py_modules/pypixmlrpc.py](https://github.com/russianidiot/pypixmlrpc.py/blob/master/py_modules/pypixmlrpc.py)
 
 ### Links
-
 *	PyPiXmlRpc - PythonInfo Wiki - [wiki.python.org/moin/PyPiXmlRpc](http://wiki.python.org/moin/PyPiXmlRpc)
 
 Feedback
