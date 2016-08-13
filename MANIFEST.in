@@ -17,4 +17,4 @@ global-exclude *.py[co] *.command
 
 exclude __pycache__/* LICENSE* README* description
 
-include */*.py data_files/* Examples/* Tests/* *.txt
+include *.py Examples/* Tests/* *.txt
