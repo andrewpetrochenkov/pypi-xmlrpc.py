@@ -15,7 +15,7 @@ README generated with readmemako.py (github.com/russianidiot/readme-mako.py) and
 [![semaphoreci.com](https://semaphoreci.com/api/v1/russianidiot/pypixmlrpc-py/branches/master/shields_badge.svg)](https://semaphoreci.com/russianidiot/pypixmlrpc-py)
 [![shippable.com](https://api.shippable.com/projects/57068cbb2a8192902e1bbbd8/badge?branch=master)](https://app.shippable.com/projects/57068cbb2a8192902e1bbbd8/status/)
 [![travis-ci.org](https://api.travis-ci.org/russianidiot/pypixmlrpc.py.svg)](https://travis-ci.org/russianidiot/pypixmlrpc.py)
-[![wercker.com](https://app.wercker.com/status/dcbb3555061ed95f4da533e02bbc4d98/s/master)](https://app.wercker.com/#applications/5702b5e6a7bb73af2515f8d7)
+[![wercker.com](https://app.wercker.com/status/dcbb3555061ed95f4da533e02bbc4d98/s/master)](https://app.wercker.com/russianidiot/pypixmlrpc.py/)
 
 <p align="center">
     <b>pypi XML-RPC wrapper</b>
