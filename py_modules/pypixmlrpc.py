@@ -14,7 +14,7 @@ from public import public
 class Server:
     url = None
 
-    def __init__(self, url='http://pypi.python.org/pypi'):
+    def __init__(self, url='https://pypi.python.org/pypi'):
         self.url = url
 
     @property
@@ -24,9 +24,9 @@ class Server:
     def json(self, package, version=None):
         """return json"""
         if version:
-            url = "http://pypi.python.org/pypi/%s/%s/json" % (package, version)
+            url = "https://pypi.python.org/pypi/%s/%s/json" % (package, version)
         else:
-            url = "http://pypi.python.org/pypi/%s/json" % package
+            url = "https://pypi.python.org/pypi/%s/json" % package
         r = requests.get(url)
         if r.status_code == 200:
             return dict(r.json)
@@ -99,5 +99,5 @@ Role is either 'Maintainer' or 'Owner'
         return self._ServerProxy.user_packages(user)
 
 
-pypi = Server('http://pypi.python.org/pypi')
+pypi = Server('https://pypi.python.org/pypi')
 public(pypi)
