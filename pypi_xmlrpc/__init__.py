@@ -10,31 +10,31 @@ pypi = ServerProxy('https://pypi.org/pypi', allow_none=True)
 
 @public.add
 def list_packages():
-    """return list of all server packages"""
+    """return a list of all server packages"""
     return pypi.list_packages()
 
 
 @public.add
 def user_packages(user):
-    """return list of user packages"""
+    """return a list of user packages"""
     return pypi.user_packages(user)
 
 
 @public.add
 def release_urls(name, version):
-    """return list of release urls"""
+    """return a list of release urls"""
     return pypi.release_urls(name, version)
 
 
 @public.add
 def package_roles(name):
-    """return list of package roles"""
+    """return a list of package roles"""
     return pypi.package_roles(name)
 
 
 @public.add
 def package_releases(name, show_hidden=True):
-    """return list of package releases"""
+    """return a list of package releases"""
     return pypi.package_releases(name, show_hidden)
 
 

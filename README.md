@@ -1,27 +1,29 @@
-[![](https://img.shields.io/pypi/pyversions/pypi-xmlrpc.svg?longCache=True)](https://pypi.org/pypi/pypi-xmlrpc/)
-[![](https://img.shields.io/pypi/v/pypi-xmlrpc.svg?maxAge=3600)](https://pypi.org/pypi/pypi-xmlrpc/)
+<!--
+https://pypi.org/project/readme-generator/
+-->
+
+[![](https://img.shields.io/pypi/pyversions/pypi-xmlrpc.svg?longCache=True)](https://pypi.org/project/pypi-xmlrpc/)
+[![](https://img.shields.io/pypi/v/pypi-xmlrpc.svg?maxAge=3600)](https://pypi.org/project/pypi-xmlrpc/)
 [![Travis](https://api.travis-ci.org/looking-for-a-job/pypi-xmlrpc.py.svg?branch=master)](https://travis-ci.org/looking-for-a-job/pypi-xmlrpc.py/)
 
-#### Install
+#### Installation
 ```bash
 $ [sudo] pip install pypi-xmlrpc
 ```
 
 #### Functions
-function|description
+function|`__doc__`
 -|-
-`pypi_xmlrpc.list_packages()`|return list of all server packages
-`pypi_xmlrpc.package_releases(name, show_hidden=True)`|return list of package releases
-`pypi_xmlrpc.package_roles(name)`|return list of package roles
-`pypi_xmlrpc.release_data(name, version)`|return dictionary with release data
-`pypi_xmlrpc.release_urls(name, version)`|return list of release urls
-`pypi_xmlrpc.user_packages(user)`|return list of user packages
+`pypi_xmlrpc.list_packages()` |return a list of all server packages
+`pypi_xmlrpc.package_roles(name)` |return a list of package roles
+`pypi_xmlrpc.release_data(name, version)` |return dictionary with release data
+`pypi_xmlrpc.release_urls(name, version)` |return a list of release urls
 
 #### CLI
-usage|description
+usage|`__doc__`
 -|-
-`python -m pypi_xmlrpc.package_releases name`|print package releases
-`python -m pypi_xmlrpc.user_packages user`|print user packages
+`python -m pypi_xmlrpc.package_releases name` |print package releases
+`python -m pypi_xmlrpc.user_packages user` |print user packages
 
 #### Examples
 `user_packages(user)` `[(role,name),...]`
@@ -58,4 +60,6 @@ usage|description
 #### Links
 +   [PyPiXmlRpc - PythonInfo Wiki](http://wiki.python.org/moin/PyPiXmlRpc)
 
-<p align="center"><a href="https://pypi.org/project/readme-md/">readme-md</a> - README.md generator</p>
+<p align="center">
+    <a href="https://pypi.org/project/readme-generator/">readme-generator</a>
+</p>
