@@ -1,5 +1,6 @@
 <!--
 https://pypi.org/project/readme-generator/
+https://pypi.org/project/python-readme-generator/
 -->
 
 [![](https://img.shields.io/pypi/pyversions/pypi-xmlrpc.svg?longCache=True)](https://pypi.org/project/pypi-xmlrpc/)
@@ -19,7 +20,7 @@ function|`__doc__`
 `pypi_xmlrpc.release_data(name, version)` |return dictionary with release data
 `pypi_xmlrpc.release_urls(name, version)` |return a list of release urls
 
-#### CLI
+#### Executable modules
 usage|`__doc__`
 -|-
 `python -m pypi_xmlrpc.package_releases name` |print package releases
@@ -61,5 +62,5 @@ usage|`__doc__`
 +   [PyPiXmlRpc - PythonInfo Wiki](http://wiki.python.org/moin/PyPiXmlRpc)
 
 <p align="center">
-    <a href="https://pypi.org/project/readme-generator/">readme-generator</a>
+    <a href="https://pypi.org/project/python-readme-generator/">python-readme-generator</a>
 </p>
