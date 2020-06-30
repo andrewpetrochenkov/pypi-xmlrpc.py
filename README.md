@@ -1,30 +1,16 @@
 <!--
-https://pypi.org/project/readme-generator/
-https://pypi.org/project/python-readme-generator/
+https://readme42.com
 -->
 
-[![](https://img.shields.io/pypi/pyversions/pypi-xmlrpc.svg?longCache=True)](https://pypi.org/project/pypi-xmlrpc/)
-[![](https://img.shields.io/pypi/v/pypi-xmlrpc.svg?maxAge=3600)](https://pypi.org/project/pypi-xmlrpc/)
-[![Travis](https://api.travis-ci.org/looking-for-a-job/pypi-xmlrpc.py.svg?branch=master)](https://travis-ci.org/looking-for-a-job/pypi-xmlrpc.py/)
 
-#### Installation
+[![](https://img.shields.io/pypi/v/pypi-xmlrpc.svg?maxAge=3600)](https://pypi.org/project/pypi-xmlrpc/)
+[![](https://img.shields.io/badge/License-Unlicense-blue.svg?longCache=True)](https://unlicense.org/)
+[![](https://github.com/andrewp-as-is/pypi-xmlrpc.py/workflows/tests42/badge.svg)](https://github.com/andrewp-as-is/pypi-xmlrpc.py/actions)
+
+### Installation
 ```bash
 $ [sudo] pip install pypi-xmlrpc
 ```
-
-#### Functions
-function|`__doc__`
--|-
-`pypi_xmlrpc.list_packages()` |return a list of all server packages
-`pypi_xmlrpc.package_roles(name)` |return a list of package roles
-`pypi_xmlrpc.release_data(name, version)` |return dictionary with release data
-`pypi_xmlrpc.release_urls(name, version)` |return a list of release urls
-
-#### Executable modules
-usage|`__doc__`
--|-
-`python -m pypi_xmlrpc.package_releases name` |print package releases
-`python -m pypi_xmlrpc.user_packages user` |print user packages
 
 #### Examples
 `user_packages(user)` `[(role,name),...]`
@@ -62,5 +48,5 @@ usage|`__doc__`
 +   [PyPiXmlRpc - PythonInfo Wiki](http://wiki.python.org/moin/PyPiXmlRpc)
 
 <p align="center">
-    <a href="https://pypi.org/project/python-readme-generator/">python-readme-generator</a>
+    <a href="https://readme42.com/">readme42.com</a>
 </p>
